@@ -1,0 +1,4 @@
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\mantis-tests\obj\Debug\mantis-tests.csproj.AssemblyReference.cache
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\mantis-tests\obj\Debug\mantis-tests.csproj.CoreCompileInputs.cache
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\obj\Debug\mantis-tests.csproj.AssemblyReference.cache
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\obj\Debug\mantis-tests.csproj.CoreCompileInputs.cache

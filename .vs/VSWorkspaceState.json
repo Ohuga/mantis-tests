@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\mantis-tests",
+    "\\mantis-tests\\appManager",
+    "\\mantis-tests\\tests"
   ],
-  "SelectedNode": "\\C:\\Users\\Оля\\Source\\Repos\\mantis-tests",
+  "SelectedNode": "\\mantis-tests\\tests",
   "PreviewInSolutionExplorer": false
 }

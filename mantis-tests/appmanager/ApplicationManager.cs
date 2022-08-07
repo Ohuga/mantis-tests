@@ -20,6 +20,7 @@ namespace mantis_tests
         public RegistrationHelper Registration { get; private set; }
         public FtpHelper Ftp { get; private set; }
         public JamesHelper James { get; private set; }
+        public MailHelper Mail { get; }
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -30,6 +31,7 @@ namespace mantis_tests
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);
+            Mail = new MailHelper(this);
 
         }
 

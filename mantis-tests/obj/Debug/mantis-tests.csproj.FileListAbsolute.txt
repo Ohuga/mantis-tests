@@ -27,3 +27,6 @@ C:\Users\Оля\source\repos\mantis-tests\mantis-tests\obj\Debug\mantis-tests.pd
 C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\config_inc.php
 C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\System.Net.FtpClient.dll
 C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\System.Net.FtpClient.xml
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\OpaqueMail.dll
+C:\Users\Оля\source\repos\mantis-tests\mantis-tests\bin\Debug\BouncyCastle.Crypto.pdb

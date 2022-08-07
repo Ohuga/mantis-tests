@@ -41,5 +41,13 @@ namespace mantis_tests
         {
             return driver.FindElements(By.Name(name));
         }
+        protected void OpenMainPage()
+        {
+            manager.Driver.Url = "http://localhost/mantisbt-2.25.4/login_page.php";
+        }
+        protected void SubmitPasswordForm()
+        {
+            driver.FindElement(By.XPath("/html/body/div/div/div/div/div/div[4]/div/div/div[1]/form/fieldset/input[2]")).Click();
+        }
     }
 }

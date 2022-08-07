@@ -40,11 +40,6 @@ namespace mantis_tests
 
         }
 
-        private void SubmitPasswordForm()
-        {
-            IWebElement w = driver.FindElement(By.XPath("/html/body/div/div/div/div/div/div[4]/div/div/div[1]/form/fieldset/input[2]"));
-            w.Click();
-        }
         private void SubmitUpdatePasswordForm()
         {
             IWebElement w = driver.FindElement(By.XPath("/html/body/div/div/div/div/div/div[5]/div/div/div/div/form/fieldset/span/button/span"));
@@ -69,9 +64,5 @@ namespace mantis_tests
             driver.FindElement(By.Name("email")).SendKeys(account.Email);
         }
 
-        private void OpenMainPage()
-        {
-            manager.Driver.Url = "http://localhost/mantisbt-2.25.4/login_page.php";
-        }
     }
 }

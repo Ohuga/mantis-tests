@@ -15,7 +15,7 @@ namespace mantis_tests
         public ApplicationManager app;
 
 
-        [SetUp]
+        [TestFixtureSetUp]
         public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance();

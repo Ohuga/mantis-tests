@@ -10,30 +10,25 @@ using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using OpenQA.Selenium.Chrome;
 
-namespace WebAddressbookTests
+namespace mantis_tests
 {
     public class ApplicationManager
     {
         protected IWebDriver driver;
         protected string baseURL;
 
-        protected LoginHelper loginHelper;
-        protected NavigationHelper navigator;
-        protected GroupHelper groupHelper;
-        protected AddressHelper addressHelper;
+        public RegistrationHelper Registration { get; private set; }
+        public FtpHelper Ftp { get; private set; }
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost";
+            Registration = new RegistrationHelper(this);
+            Ftp = new FtpHelper(this);
 
-            loginHelper = new LoginHelper(this);
-            navigator = new NavigationHelper(this);
-            groupHelper = new GroupHelper(this);
-            addressHelper = new AddressHelper(this);
         }
 
          ~ApplicationManager()
@@ -53,7 +48,7 @@ namespace WebAddressbookTests
             if (! app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.Navigator.GoToHomePage();
+                newInstance.driver.Url = "http://localhost/mantisbt-2.25.4/login_page.php";
                 app.Value = newInstance;
             }
             return app.Value;
@@ -61,22 +56,6 @@ namespace WebAddressbookTests
 
         public IWebDriver Driver { get { return driver; } }
  
-        public AddressHelper Address
-        {
-            get { return addressHelper; }
-        }
-        public LoginHelper Auth
-        {
-            get { return loginHelper; }
-        }
-        public NavigationHelper Navigator
-        {
-            get { return navigator; }
-        }
-        public GroupHelper Groups
-            { 
-            get { return groupHelper; } 
-
-        }
+ 
     }
 }

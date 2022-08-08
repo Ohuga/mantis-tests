@@ -23,7 +23,29 @@ namespace mantis_tests
             issue.project = new Mantis.ObjectRef();
             issue.project.id = project.Id;
             client.mc_issue_add(account.Name, account.Password, issue);
-            
+        }
+
+        public List<ProjectData> GetProjectsList(AccountData account)
+        {
+            Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient((Binding)(new BasicHttpBinding()), new EndpointAddress("http://localhost/mantisbt-2.25.4/api/soap/mantisconnect.php"));
+            Mantis.ProjectData[] list = client.mc_projects_get_user_accessible(account.Name, account.Password);
+
+            List<ProjectData> plist = new List<ProjectData>();
+            foreach (Mantis.ProjectData p in list)
+            {
+                plist.Add(new ProjectData(p.name) { Id = p.id });
+            }
+
+            return plist;
+        }
+        public void CreateProject(AccountData account, ProjectData project)
+        {
+            Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient((Binding)(new BasicHttpBinding()), new EndpointAddress("http://localhost/mantisbt-2.25.4/api/soap/mantisconnect.php"));
+            Mantis.ProjectData p = new Mantis.ProjectData
+            {
+                name = project.Name
+            };
+            project.Id = client.mc_project_add(account.Name, account.Password, p);
         }
     }
 }

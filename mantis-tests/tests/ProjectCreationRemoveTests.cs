@@ -9,6 +9,7 @@ namespace mantis_tests
     [TestFixture]
     public class ProjectCreationRemoveTests : TestBase
     {
+        private AccountData account;
         [TestFixtureSetUp]
         public void setUpConfig()
         {
@@ -23,7 +24,7 @@ namespace mantis_tests
         [SetUp]
         public void TestSetup()
         {
-            AccountData account = new AccountData()
+            account = new AccountData()
             {
                 Name = "administrator",
                 Password = "root",
@@ -44,9 +45,9 @@ namespace mantis_tests
 
             ProjectData project = new ProjectData("project");
             
-            List<ProjectData> projectsOld = app.Project.GetProjectsList();
+            List<ProjectData> projectsOld = app.API.GetProjectsList(account);
             app.Project.CreateProject(project);
-            List<ProjectData> projectsNew = app.Project.GetProjectsList();
+            List<ProjectData> projectsNew = app.API.GetProjectsList(account);
             Assert.AreNotEqual(projectsOld, projectsNew);
             Assert.AreEqual((projectsOld.Count+1), projectsNew.Count);
             app.Project.RemoveProject(project);
@@ -56,16 +57,24 @@ namespace mantis_tests
         public void TestRemoveProject()
         {
 
-            ProjectData project = new ProjectData("project");
+            ProjectData project;
 
-            List<ProjectData> projectsOld = app.Project.GetProjectsList();
-            app.Project.CreateProject(project);
-            List<ProjectData> projectsNew = app.Project.GetProjectsList();
+            List<ProjectData> projectsOld = app.API.GetProjectsList(account);
+            if (projectsOld.Count == 0)
+            {
+                project = new ProjectData("project");
+                app.API.CreateProject(account, project);
+            }
+            else
+            {
+                project = projectsOld[0];
+            }
+
+            List<ProjectData> projectsNew = app.API.GetProjectsList(account);
             app.Project.RemoveProject(project);
-            List<ProjectData> projectsRemove = app.Project.GetProjectsList();
+            List<ProjectData> projectsRemove = app.API.GetProjectsList(account);
             Assert.AreNotEqual(projectsRemove, projectsNew);
             Assert.AreEqual((projectsRemove.Count + 1), projectsNew.Count);
-            Assert.AreNotEqual(projectsRemove, projectsOld);
         }
         [TestFixtureTearDown]
         public void restoreConfig()
